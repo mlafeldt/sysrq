@@ -1,9 +1,12 @@
 language: go
 
-sudo: false
+sudo: required
 
 go: 1.9
 
 install: make install-deps
 
-script: make build
+script:
+  - make build
+  - sudo ./build/sysrq_linux_amd64 help
+  - bash -c "dmesg | grep sysrq:"
