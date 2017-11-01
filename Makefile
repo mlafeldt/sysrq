@@ -15,6 +15,9 @@ build: test lint clean
 	GOOS=darwin GOARCH=amd64 go build -o build/sysrq_darwin_amd64 ./cmd/sysrq
 	GOOS=linux  GOARCH=amd64 go build -o build/sysrq_linux_amd64  ./cmd/sysrq
 
+image:
+	docker build --force-rm -t mlafeldt/sysrq .
+
 CMD := help
 
 trigger: build
