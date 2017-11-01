@@ -5,9 +5,13 @@
 
 Go client to perform low-level commands via the [Linux SysRq interface](https://github.com/torvalds/linux/blob/master/Documentation/admin-guide/sysrq.rst).
 
-## Testing
+Among other things, SysRq can crash the system by forcing a NULL pointer dereference, which makes it a good fit for [Chaos Engineering experiments](https://medium.com/production-ready/chaos-engineering-101-1103059fae44).
 
-Here's how to run SysRq commands against a local Vagrant box:
+[See GoDoc](https://godoc.org/github.com/mlafeldt/sysrq#Command) for a list of all supported commands.
+
+## Playground
+
+Here's how to run SysRq commands against a local Vagrant machine:
 
 ```bash
 $ vagrant up
