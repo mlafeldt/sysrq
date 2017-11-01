@@ -152,6 +152,7 @@ func FromString(s string) (Command, error) {
 		"sync":                           Sync,
 		"terminate-all-tasks":            TerminateAllTasks,
 		"thaw-filesystems":               ThawFilesystems,
+		"umount":                         Unmount,
 		"unmount":                        Unmount,
 		"unraw":                          Unraw,
 	}[strings.ToLower(s)]
