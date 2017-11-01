@@ -14,13 +14,19 @@ Among other things, SysRq can crash the system by forcing a NULL pointer derefer
 Here's how to run SysRq commands against a local Vagrant machine:
 
 ```bash
+# Start Vagrant machine
 $ vagrant up
 
+# Trigger crash command
 $ make trigger CMD=crash
 
+# Show system logs
 $ make log
 ubuntu-xenial login: [   94.116848] sysrq: SysRq : Trigger a crash
 [   94.152571] BUG: unable to handle kernel NULL pointer dereference at           (null)
 [   94.263679] IP: [<ffffffff81504df6>] sysrq_handle_crash+0x16/0x20
 ...
+
+# Fix Vagrant machine
+$ vagrant reload
 ```
