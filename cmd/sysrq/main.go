@@ -24,7 +24,7 @@ func main() {
 	sys := sysrq.SysRq{TriggerFile: os.Getenv("TRIGGER_FILE")}
 
 	for _, cmd := range cmds {
-		fmt.Printf("Triggering SysRq command %s ...\n", cmd)
+		fmt.Printf("Triggering SysRq command %q ...\n", cmd)
 		if err := sys.Trigger(cmd); err != nil {
 			abort("%s", err)
 		}
