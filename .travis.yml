@@ -1,0 +1,9 @@
+language: go
+
+sudo: false
+
+go: 1.9
+
+install: make install-deps
+
+script: make build
