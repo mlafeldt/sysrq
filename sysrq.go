@@ -28,6 +28,10 @@ const (
 	// but doesn't panic if nothing can be killed.
 	MemoryFullOOMKill Command = 'f'
 
+	// Help displays help (actually any other key than those listed here
+	// will display help.)
+	Help Command = 'h'
+
 	// KillAllTasks sends a SIGKILL to all processes, except for init.
 	KillAllTasks Command = 'i'
 
@@ -122,6 +126,7 @@ func FromString(s string) (Command, error) {
 	cmd, ok := map[string]Command{
 		"crash":                          Crash,
 		"dump-ftrace-buffer":             DumpFtraceBuffer,
+		"help":                           Help,
 		"kill-all-tasks":                 KillAllTasks,
 		"loglevel0":                      Loglevel0,
 		"loglevel1":                      Loglevel1,
@@ -161,6 +166,7 @@ func (cmd Command) String() string {
 	return map[Command]string{
 		Crash:                      "crash",
 		DumpFtraceBuffer:           "dump-ftrace-buffer",
+		Help:                       "help",
 		KillAllTasks:               "kill-all-tasks",
 		Loglevel0:                  "loglevel0",
 		Loglevel1:                  "loglevel1",
