@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"os"
 
 	"github.com/mlafeldt/sysrq"
@@ -12,17 +12,26 @@ func main() {
 	for _, arg := range os.Args[1:] {
 		cmd, err := sysrq.FromString(arg)
 		if err != nil {
-			log.Fatal(err)
+			abort("%s", err)
 		}
 		cmds = append(cmds, cmd)
+	}
+
+	if len(cmds) == 0 {
+		abort("no command specified")
 	}
 
 	sys := sysrq.SysRq{TriggerFile: os.Getenv("TRIGGER_FILE")}
 
 	for _, cmd := range cmds {
-		log.Printf("Triggering SysRq command %s ...\n", cmd)
+		fmt.Printf("Triggering SysRq command %s ...\n", cmd)
 		if err := sys.Trigger(cmd); err != nil {
-			log.Fatal(err)
+			abort("%s", err)
 		}
 	}
+}
+
+func abort(format string, a ...interface{}) {
+	fmt.Fprintf(os.Stderr, "error: "+format+"\n", a...)
+	os.Exit(1)
 }
