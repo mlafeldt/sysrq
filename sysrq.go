@@ -191,7 +191,7 @@ func (cmd Command) String() string {
 	}[cmd]
 }
 
-// SysRq is used to configures access to the Linux SysRq interface.
+// SysRq is used to configure access to the Linux SysRq interface.
 type SysRq struct {
 	TriggerFile string
 }
