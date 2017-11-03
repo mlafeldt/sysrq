@@ -121,6 +121,40 @@ const (
 	DefaultTriggerFile = "/proc/sysrq-trigger"
 )
 
+// Commands is a list of supported SysRq commands.
+var Commands = []Command{
+	Crash,
+	DumpFtraceBuffer,
+	Help,
+	KillAllTasks,
+	Loglevel0,
+	Loglevel1,
+	Loglevel2,
+	Loglevel3,
+	Loglevel4,
+	Loglevel5,
+	Loglevel6,
+	Loglevel7,
+	Loglevel8,
+	Loglevel9,
+	MemoryFullOOMKill,
+	NiceAllRTTasks,
+	Poweroff,
+	Reboot,
+	SAK,
+	ShowAllTimers,
+	ShowBacktraceAllActiveCPUs,
+	ShowBlockedTasks,
+	ShowMemoryUsage,
+	ShowRegisters,
+	ShowTaskStates,
+	Sync,
+	TerminateAllTasks,
+	ThawFilesystems,
+	Unmount,
+	Unraw,
+}
+
 // FromString creates a Command from a string.
 func FromString(s string) (Command, error) {
 	cmd, ok := map[string]Command{

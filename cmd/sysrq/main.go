@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 
@@ -8,17 +9,27 @@ import (
 )
 
 func main() {
+	listCommands := flag.Bool("list", false, "List SysRq commands")
+	flag.Parse()
+
+	if *listCommands {
+		for _, cmd := range sysrq.Commands {
+			fmt.Println(cmd)
+		}
+		return
+	}
+
+	if flag.NArg() == 0 {
+		abort("no command specified")
+	}
+
 	var cmds []sysrq.Command
-	for _, arg := range os.Args[1:] {
+	for _, arg := range flag.Args() {
 		cmd, err := sysrq.FromString(arg)
 		if err != nil {
 			abort("%s", err)
 		}
 		cmds = append(cmds, cmd)
-	}
-
-	if len(cmds) == 0 {
-		abort("no command specified")
 	}
 
 	sys := sysrq.SysRq{TriggerFile: os.Getenv("TRIGGER_FILE")}

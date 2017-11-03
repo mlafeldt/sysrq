@@ -8,11 +8,9 @@ Go client to perform low-level commands via the [Linux SysRq interface](https://
 
 Among other things, SysRq can crash the system by forcing a NULL pointer dereference, which makes it a good fit for [Chaos Engineering experiments](https://medium.com/production-ready/chaos-engineering-101-1103059fae44).
 
-[See GoDoc](https://godoc.org/github.com/mlafeldt/sysrq#Command) for a list of all supported commands.
-
 ## CLI
 
-In addition to the Go library, there's a `sysrq` command-line tool that you can install from source:
+In addition to the Go library, there's a `sysrq` command-line tool you can install from source:
 
 ```bash
 go get -u github.com/mlafeldt/sysrq/cmd/sysrq
@@ -22,6 +20,12 @@ Use the tool to trigger one or more commands:
 
 ```bash
 sudo sysrq <cmd>...
+```
+
+This will print a list of all available commands:
+
+```bash
+sysrq -list
 ```
 
 ## Vagrant playground
