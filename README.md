@@ -10,7 +10,7 @@ Among other things, SysRq can crash the system by forcing a NULL pointer derefer
 
 ## CLI
 
-In addition to the Go library, there's a `sysrq` command-line tool you can install from source:
+In addition to the [Go library](https://godoc.org/github.com/mlafeldt/sysrq), there's a `sysrq` command-line tool you can install from source:
 
 ```bash
 go get -u github.com/mlafeldt/sysrq/cmd/sysrq
